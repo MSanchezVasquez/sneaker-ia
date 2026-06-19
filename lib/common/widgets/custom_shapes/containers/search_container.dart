@@ -40,7 +40,7 @@ class TSearchContainer extends StatelessWidget {
           children: [
             Icon(Iconsax.search_normal, color: TColors.darkerGrey),
             const SizedBox(width: TSizes.spaceBtwItems),
-            Text("Search in Store", style: Theme.of(context).textTheme.bodySmall)
+            Text(text, style: Theme.of(context).textTheme.bodySmall)
           ],
         ),
       ),
