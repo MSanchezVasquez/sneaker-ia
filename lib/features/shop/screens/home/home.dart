@@ -3,6 +3,8 @@ import 'package:sneaker_store/common/widgets/custom_shapes/containers/primary_he
 import 'package:sneaker_store/common/widgets/texts/section_heading.dart';
 import 'package:sneaker_store/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:sneaker_store/features/shop/screens/home/widgets/home_categories.dart';
+import 'package:sneaker_store/features/shop/screens/home/widgets/promo_slider.dart';
+import 'package:sneaker_store/utils/constants/image_strings.dart';
 import 'package:sneaker_store/utils/constants/sizes.dart';
 import '../../../../common/widgets/custom_shapes/containers/search_container.dart';
 
@@ -11,7 +13,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -20,12 +22,12 @@ class HomeScreen extends StatelessWidget {
               child: Column(
                 children: [
                   /// -- Appbar
-                   THomeAppBar(),
-                   SizedBox(height: TSizes.spaceBtwSections),
+                  THomeAppBar(),
+                  SizedBox(height: TSizes.spaceBtwSections),
 
                   /// -- Searchbar
                   TSearchContainer(text: "Search in Store"),
-                   SizedBox(height: TSizes.spaceBtwSections),
+                  SizedBox(height: TSizes.spaceBtwSections),
 
                   /// -- Categories
                   Padding(
@@ -38,15 +40,23 @@ class HomeScreen extends StatelessWidget {
                           showActionButton: false,
                           textColor: Colors.white,
                         ),
-                         SizedBox(height: TSizes.spaceBtwItems),
+                        SizedBox(height: TSizes.spaceBtwItems),
 
                         /// Categories
-                        THomeCategory(),
+                        THomeCategories(),
                       ],
                     ),
                   ),
                 ],
               ),
+            ),
+
+            /// Body
+            Padding(
+              padding: const EdgeInsets.all(TSizes.defaultSpace),
+              child: TPromoSlider(banners: [
+                TImages.promoBanner1, TImages.promoBanner2, TImages.promoBanner3
+              ],),
             ),
           ],
         ),
