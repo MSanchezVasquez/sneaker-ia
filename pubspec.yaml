@@ -19,6 +19,7 @@ dependencies:
   logger: ^2.0.1
   url_launcher: ^6.1.12
   smooth_page_indicator: ^2.0.1
+  carousel_slider: ^5.1.2
 
   # Icons
   iconsax: ^0.0.8
@@ -50,6 +51,7 @@ flutter:
     - assets/images/on_boarding_images/
     - assets/images/animations/
     - assets/icons/categories/
+    - assets/images/banners/
 #---------LOCAL FONTS---------#
 fonts:
   - family: Poppins
