@@ -4,10 +4,10 @@ import 'package:sneaker_store/utils/constants/colors.dart';
 
 class TCartCounterIcon extends StatelessWidget {
   const TCartCounterIcon({
-    super.key, required this.iconColor, required this.onPressed,
+    super.key, this.iconColor, required this.onPressed,
   });
 
-  final Color iconColor;
+  final Color? iconColor;
   final VoidCallback onPressed;
 
   @override
