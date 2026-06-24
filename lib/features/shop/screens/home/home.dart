@@ -55,7 +55,7 @@ class HomeScreen extends StatelessWidget {
 
             /// Body
             Padding(
-              padding: EdgeInsets.all(TSizes.defaultSpace),
+              padding: const EdgeInsets.all(TSizes.defaultSpace),
               child: Column(
                 children: [
                   /// -- Promo Sliders
@@ -66,6 +66,8 @@ class HomeScreen extends StatelessWidget {
                       TImages.promoBanner3,
                     ],
                   ),
+                  /// -- Heading
+                   TSectionHeading(title: "Popular Products", onPressed: (){},),
                   const SizedBox(height: TSizes.spaceBtwSections),
 
                   /// -- Popular Products
