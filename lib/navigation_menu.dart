@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:sneaker_store/features/shop/screens/home/home.dart';
+import 'package:sneaker_store/features/shop/screens/store/store.dart';
 import 'package:sneaker_store/utils/constants/colors.dart';
 import 'package:sneaker_store/utils/helpers/helper_functions.dart';
 
@@ -42,7 +42,7 @@ class NavigationController extends GetxController {
 
   final screens = [
     const HomeScreen(),
-    Container(color: Colors.purple),
+    const StoreScreen(),
     Container(color: Colors.orange),
     Container(color: Colors.blue),
   ];
