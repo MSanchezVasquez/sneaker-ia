@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sneaker_store/features/authentication/screens/signup/verify_email.dart';
 import 'package:sneaker_store/features/authentication/screens/signup/widgets/terms_conditions_checkbox.dart';
-import 'package:sneaker_store/utils/constants/colors.dart';
 import 'package:sneaker_store/utils/constants/sizes.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:sneaker_store/utils/constants/text_strings.dart';
