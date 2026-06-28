@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:get/get.dart";
 import "package:iconsax/iconsax.dart";
 import "package:sneaker_store/common/widgets/appbar/appbar.dart";
 import "package:sneaker_store/common/widgets/custom_shapes/containers/primary_header_container.dart";
@@ -8,6 +9,7 @@ import "package:sneaker_store/utils/constants/colors.dart";
 import "package:sneaker_store/utils/constants/sizes.dart";
 
 import "../../../../common/widgets/list_tiles/user_profile_tile.dart";
+import "../profile/profile.dart";
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -32,7 +34,7 @@ class SettingsScreen extends StatelessWidget {
                   ),
 
                   /// User Profile Card
-                  TUserProfileTile(),
+                  TUserProfileTile(onPressed: () => Get.to( () => const ProfileScreen())),
                   const SizedBox(height: TSizes.spaceBtwSections),
                 ],
               ),
