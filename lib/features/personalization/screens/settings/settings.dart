@@ -5,6 +5,7 @@ import "package:sneaker_store/common/widgets/appbar/appbar.dart";
 import "package:sneaker_store/common/widgets/custom_shapes/containers/primary_header_container.dart";
 import "package:sneaker_store/common/widgets/list_tiles/settings_menu_tile.dart";
 import "package:sneaker_store/common/widgets/texts/section_heading.dart";
+import "package:sneaker_store/features/personalization/screens/address/address.dart";
 import "package:sneaker_store/utils/constants/colors.dart";
 import "package:sneaker_store/utils/constants/sizes.dart";
 
@@ -52,10 +53,11 @@ class SettingsScreen extends StatelessWidget {
                   ),
                   SizedBox(height: TSizes.spaceBtwItems),
 
-                  const TSettingsMenuTile(
+                  TSettingsMenuTile(
                     icon: Iconsax.safe_home,
                     title: "My Addresses",
                     subTitle: "Set shopping delivery address",
+                    onTap: () => Get.to(() => const UserAddressScreen()),
                   ),
                   const TSettingsMenuTile(
                     icon: Iconsax.shopping_cart,
