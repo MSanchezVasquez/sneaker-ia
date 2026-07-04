@@ -6,6 +6,7 @@ import "package:sneaker_store/common/widgets/custom_shapes/containers/primary_he
 import "package:sneaker_store/common/widgets/list_tiles/settings_menu_tile.dart";
 import "package:sneaker_store/common/widgets/texts/section_heading.dart";
 import "package:sneaker_store/features/personalization/screens/address/address.dart";
+import "package:sneaker_store/features/shop/screens/order/order.dart";
 import "package:sneaker_store/utils/constants/colors.dart";
 import "package:sneaker_store/utils/constants/sizes.dart";
 
@@ -64,10 +65,11 @@ class SettingsScreen extends StatelessWidget {
                     title: "My Cart",
                     subTitle: "Add, remove products and move to checkout",
                   ),
-                  const TSettingsMenuTile(
+                  TSettingsMenuTile(
                     icon: Iconsax.bag_tick,
                     title: "My Orders",
                     subTitle: "In-progress and Completed Orders",
+                    onTap: () => Get.to(() => const OrderScreen()),
                   ),
                   const TSettingsMenuTile(
                     icon: Iconsax.bank,
