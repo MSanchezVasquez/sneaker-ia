@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:sneaker_store/common/widgets/appbar/appbar.dart';
 import 'package:sneaker_store/common/widgets/appbar/tabbar.dart';
 import 'package:sneaker_store/common/widgets/custom_shapes/containers/search_container.dart';
@@ -11,6 +12,7 @@ import 'package:sneaker_store/utils/constants/sizes.dart';
 import 'package:sneaker_store/utils/helpers/helper_functions.dart';
 
 import '../../../../common/widgets/brands/brand_card.dart';
+import '../brand/all_brands.dart';
 
 class StoreScreen extends StatelessWidget {
   const StoreScreen({super.key});
@@ -57,7 +59,7 @@ class StoreScreen extends StatelessWidget {
                       TSectionHeading(
                         title: "Feature Brands",
                         showActionButton: true,
-                        onPressed: () {},
+                        onPressed: () => Get.to(() => const AllBrandsScreen()),
                       ),
                       const SizedBox(height: TSizes.spaceBtwItems / 1.5),
 
