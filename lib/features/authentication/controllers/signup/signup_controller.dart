@@ -29,7 +29,7 @@ class SignupController extends GetxController {
   void signup() async {
     try {
       // Start Loading
-      TFullScreenLoader.openLoadingDialog("We are proccessing your information...", TImages.successfulPaymentIcon);
+      TFullScreenLoader.openLoadingDialog("We are proccessing your information...", TImages.docerAnimation);
 
       // Check Internet Connectivity
       final isConnected = await NetworkManager.instance.isConnected();
@@ -41,6 +41,7 @@ class SignupController extends GetxController {
 
       // Form Validation
       if(!signupFormKey.currentState!.validate()) {
+        // Remove Loader
         TFullScreenLoader.stopLoading();
         return;
       }
@@ -78,7 +79,7 @@ class SignupController extends GetxController {
       TLoaders.successSnackBar(title: "Congratulations", message: "Your account has been created! Verify email to continue.");
 
       // Move to verify email screen
-      Get.to(() => const VerifyEmailScreen());
+      Get.to(() => VerifyEmailScreen(email: email.text.trim()));
     } catch(e) {
       // Remove Loader
       TFullScreenLoader.stopLoading();

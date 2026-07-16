@@ -44,15 +44,18 @@ class TValidator {
   }
 
   static String? validatePhoneNumber(String? value) {
-    if (value == null || value.isEmpty) {
-      return "Phone number is required";
+    if (value == null || value.trim().isEmpty) {
+      return "El número de celular es obligatorio";
     }
 
-    // Regular expression for phone number validation
-    final phoneRegExp = RegExp(r'^\d{10}$');
-    if (!phoneRegExp.hasMatch(value)) {
-      return "Please enter a valid phone number";
+    final phone = value.trim();
+
+    final phoneRegExp = RegExp(r'^(?:\+51|51)?9\d{8}$');
+
+    if (!phoneRegExp.hasMatch(phone)) {
+      return "Ingrese un número de celular peruano válido";
     }
+
     return null;
   }
 }
