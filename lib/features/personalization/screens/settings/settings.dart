@@ -36,7 +36,9 @@ class SettingsScreen extends StatelessWidget {
                   ),
 
                   /// User Profile Card
-                  TUserProfileTile(onPressed: () => Get.to( () => const ProfileScreen())),
+                  TUserProfileTile(
+                    onPressed: () => Get.to(() => const ProfileScreen()),
+                  ),
                   const SizedBox(height: TSizes.spaceBtwSections),
                 ],
               ),
@@ -127,7 +129,10 @@ class SettingsScreen extends StatelessWidget {
                   const SizedBox(height: TSizes.spaceBtwSections),
                   SizedBox(
                     width: double.infinity,
-                    child: OutlinedButton(onPressed: (){}, child: const Text("Logout")),
+                    child: OutlinedButton(
+                      onPressed: () {},
+                      child: const Text("Logout"),
+                    ),
                   ),
                   const SizedBox(height: TSizes.spaceBtwSections * 2.5),
                 ],
