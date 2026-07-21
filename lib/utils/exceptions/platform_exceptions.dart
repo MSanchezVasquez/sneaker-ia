@@ -42,8 +42,14 @@ class TPlatformException implements Exception {
       case 'invalid-verification-code':
         return 'Invalid verification code. Please enter a valid code.';
 
+      case 'invalid-verification-id':
+        return 'Invalid verification ID. Please enter a new verification code.';
+
+      case 'quota-exceeded':
+        return 'Quota exceeded. Please try again later.';
+
       default:
-        return "aaaaaaa";
+        return "An unexpected platform error ocurred. Please try again.";
     }
   }
 }
