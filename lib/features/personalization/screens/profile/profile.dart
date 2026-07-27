@@ -9,6 +9,7 @@ import 'package:sneaker_store/features/personalization/screens/profile/widgets/p
 import 'package:sneaker_store/utils/constants/image_strings.dart';
 import 'package:sneaker_store/utils/constants/sizes.dart';
 
+import '../../../../common/widgets/loaders/shimmer.dart';
 import '../../controllers/user_controller.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -31,13 +32,20 @@ class ProfileScreen extends StatelessWidget {
                 width: double.infinity,
                 child: Column(
                   children: [
-                    const TCircularImage(
-                      image: TImages.user,
-                      width: 80,
-                      height: 80,
-                    ),
+                    Obx(() {
+                      final networkImage = controller.user.value.profilePicture;
+                      final image = networkImage.isNotEmpty ? networkImage : TImages.user;
+                      return controller.imageUploading.value
+                        ? const TShimmerEffect(width: 80, height: 80, radius: 80)
+                        : TCircularImage(
+                        image: image,
+                        width: 80,
+                        height: 80,
+                        isNetworkImage: networkImage.isNotEmpty,
+                      );
+                    }),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () => controller.uploadUserProfilePicture(),
                       child: const Text("Change Profile Picture"),
                     ),
                   ],
