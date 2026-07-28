@@ -9,7 +9,7 @@ import 'package:sneaker_store/features/personalization/screens/profile/widgets/p
 import 'package:sneaker_store/utils/constants/image_strings.dart';
 import 'package:sneaker_store/utils/constants/sizes.dart';
 
-import '../../../../common/widgets/loaders/shimmer.dart';
+import '../../../../common/widgets/shimmers/shimmer.dart';
 import '../../controllers/user_controller.dart';
 
 class ProfileScreen extends StatelessWidget {

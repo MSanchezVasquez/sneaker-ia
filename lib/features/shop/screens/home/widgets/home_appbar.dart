@@ -6,7 +6,7 @@ import 'package:sneaker_store/features/personalization/controllers/user_controll
 import 'package:sneaker_store/utils/constants/colors.dart';
 import 'package:sneaker_store/utils/constants/text_strings.dart';
 
-import '../../../../../common/widgets/loaders/shimmer.dart';
+import '../../../../../common/widgets/shimmers/shimmer.dart';
 
 class THomeAppBar extends StatelessWidget {
   const THomeAppBar({super.key});
