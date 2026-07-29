@@ -12,7 +12,6 @@ import 'package:sneaker_store/features/shop/screens/home/widgets/home_appbar.dar
 import 'package:sneaker_store/features/shop/screens/home/widgets/home_categories.dart';
 import 'package:sneaker_store/features/shop/screens/home/widgets/promo_slider.dart';
 
-import 'package:sneaker_store/utils/constants/image_strings.dart';
 import 'package:sneaker_store/utils/constants/sizes.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -55,7 +54,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
 
-                   SizedBox(height: TSizes.spaceBtwSections)
+                  SizedBox(height: TSizes.spaceBtwSections),
                 ],
               ),
             ),
@@ -66,19 +65,20 @@ class HomeScreen extends StatelessWidget {
               child: Column(
                 children: [
                   /// -- Promo Sliders
-                  const TPromoSlider(
-                    banners: [
-                      TImages.promoBanner1,
-                      TImages.promoBanner2,
-                      TImages.promoBanner3,
-                    ],
-                  ),
+                  const TPromoSlider(),
+
                   /// -- Heading
-                   TSectionHeading(title: "Popular Products", onPressed: () => Get.to(()=> const AllProducts())),
+                  TSectionHeading(
+                    title: "Popular Products",
+                    onPressed: () => Get.to(() => const AllProducts()),
+                  ),
                   const SizedBox(height: TSizes.spaceBtwItems),
 
                   /// -- Popular Products
-                  TGridLayout(itemCount: 4, itemBuilder: (_, index) => const TProductCardVertical())
+                  TGridLayout(
+                    itemCount: 4,
+                    itemBuilder: (_, index) => const TProductCardVertical(),
+                  ),
                 ],
               ),
             ),
