@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:sneaker_store/bindings/general_bindings.dart";
+import "package:sneaker_store/routes/app_routes.dart";
 import "package:sneaker_store/utils/constants/colors.dart";
 import "package:sneaker_store/utils/theme/theme.dart";
 
@@ -14,6 +15,7 @@ class App extends StatelessWidget {
       theme: TAppTheme.lightTheme,
       darkTheme: TAppTheme.darkTheme,
       initialBinding: GeneralBindings(),
+      getPages: AppRoutes.pages,
       home: const Scaffold(
         backgroundColor: TColors.primary,
         body: Center(child: CircularProgressIndicator(color: Colors.white)),
