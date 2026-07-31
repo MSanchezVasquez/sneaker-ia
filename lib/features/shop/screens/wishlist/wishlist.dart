@@ -8,6 +8,8 @@ import "package:sneaker_store/common/widgets/products/product_cards/product_card
 import "package:sneaker_store/features/shop/screens/home/home.dart";
 import "package:sneaker_store/utils/constants/sizes.dart";
 
+import "../../models/product_model.dart";
+
 class FavouriteScreen extends StatelessWidget {
   const FavouriteScreen({super.key});
 
@@ -25,7 +27,7 @@ class FavouriteScreen extends StatelessWidget {
             padding: const EdgeInsets.all(TSizes.defaultSpace),
           child: Column(
             children: [
-              TGridLayout(itemCount: 4, itemBuilder: (_, index) => TProductCardVertical())
+              TGridLayout(itemCount: 4, itemBuilder: (_, index) => TProductCardVertical(product: ProductModel.empty()))
             ],
           ),
         ),

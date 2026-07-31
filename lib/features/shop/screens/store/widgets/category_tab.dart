@@ -7,6 +7,7 @@ import 'package:sneaker_store/features/shop/models/category_model.dart';
 import '../../../../../common/widgets/brands/brand_show_case.dart';
 import '../../../../../utils/constants/image_strings.dart';
 import '../../../../../utils/constants/sizes.dart';
+import '../../../models/product_model.dart';
 
 class TCategoryTab extends StatelessWidget {
   const TCategoryTab({super.key, required this.category});
@@ -39,7 +40,7 @@ class TCategoryTab extends StatelessWidget {
 
               TGridLayout(
                 itemCount: 4,
-                itemBuilder: (_, index) => const TProductCardVertical(),
+                itemBuilder: (_, index) => TProductCardVertical(product: ProductModel.empty()),
               ),
               const SizedBox(height: TSizes.spaceBtwSections),
             ],
