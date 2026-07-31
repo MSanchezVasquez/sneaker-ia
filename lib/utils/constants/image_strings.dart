@@ -111,6 +111,7 @@ class TImages {
 
   // -- Brands
   static const String clothIcon = "assets/icons/brands/cloth-icon.png";
+  static const String nikeLogo = "assets/icons/brands/nike.png";
 
 }
 
