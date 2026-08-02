@@ -2,16 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:readmore/readmore.dart';
-import 'package:sneaker_store/common/widgets/texts/section_heading.dart';
+
 import 'package:sneaker_store/features/shop/models/product_model.dart';
+
 import 'package:sneaker_store/features/shop/screens/product_details/widgets/bottom_add_to_cart_widget.dart';
 import 'package:sneaker_store/features/shop/screens/product_details/widgets/product_attributes.dart';
 import 'package:sneaker_store/features/shop/screens/product_details/widgets/product_detail_image_slider.dart';
 import 'package:sneaker_store/features/shop/screens/product_details/widgets/product_meta_data.dart';
 import 'package:sneaker_store/features/shop/screens/product_details/widgets/rating_share_widget.dart';
 import 'package:sneaker_store/features/shop/screens/product_reviews/product_reviews.dart';
+import 'package:sneaker_store/common/widgets/texts/section_heading.dart';
+import 'package:sneaker_store/utils/constants/enums.dart';
 import 'package:sneaker_store/utils/constants/sizes.dart';
-import 'package:sneaker_store/utils/helpers/helper_functions.dart';
 
 class ProductDetailScreen extends StatelessWidget {
   const ProductDetailScreen({super.key, required this.product});
@@ -20,14 +22,13 @@ class ProductDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dark = THelperFunctions.isDarkMode(context);
     return Scaffold(
       bottomNavigationBar: TBottomAddToCart(),
       body: SingleChildScrollView(
         child: Column(
           children: [
             /// 1 - Product Image Slider
-            TProductImageSlider(),
+            TProductImageSlider(product: product),
 
             /// 2 - Product Details
             Padding(
@@ -42,11 +43,11 @@ class ProductDetailScreen extends StatelessWidget {
                   TRatingAndShare(),
 
                   /// - Price, Title, Stock & Brand
-                  TProductMetaData(),
+                  TProductMetaData(product: product),
 
                   /// -- Attributes
-                  TProductAttributes(),
-                  const SizedBox(height: TSizes.spaceBtwSections),
+                  if(product.productType == ProductType.variable.toString()) TProductAttributes(product: product),
+                  if(product.productType == ProductType.variable.toString()) const SizedBox(height: TSizes.spaceBtwSections),
 
                   /// -- Checkout Button
                   SizedBox(width: double.infinity, child: ElevatedButton(onPressed: (){}, child: Text("Checkout"))),
@@ -55,8 +56,8 @@ class ProductDetailScreen extends StatelessWidget {
                   /// -- Description
                   const TSectionHeading(title: "Description", showActionButton: false),
                   const SizedBox(height: TSizes.spaceBtwItems),
-                  const ReadMoreText(
-                    "This is a Product description for Blue Nike Sleeve less vest. There are more things that can be added but i am just practicing and nothing else",
+                  ReadMoreText(
+                    product.description ?? '',
                     trimLines: 2,
                     trimMode: TrimMode.Line,
                     trimCollapsedText: " Show more",
