@@ -74,19 +74,32 @@ class HomeScreen extends StatelessWidget {
                   /// -- Heading
                   TSectionHeading(
                     title: "Popular Products",
-                    onPressed: () => Get.to(() => const AllProducts()),
+                    onPressed: () => Get.to(
+                      () => AllProducts(
+                        title: "Popular Products",
+                        futureMethod: controller.fetchAllFeaturedProducts(),
+                      ),
+                    ),
                   ),
                   const SizedBox(height: TSizes.spaceBtwItems),
 
                   /// -- Popular Products
                   Obx(() {
-                    if(controller.isLoading.value) return const TVerticalProductShimmer();
-                    if(controller.featuredProducts.isEmpty) {
-                      return Center(child: Text("No Data Found", style: Theme.of(context).textTheme.bodyMedium));
+                    if (controller.isLoading.value)
+                      return const TVerticalProductShimmer();
+                    if (controller.featuredProducts.isEmpty) {
+                      return Center(
+                        child: Text(
+                          "No Data Found",
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
+                      );
                     }
                     return TGridLayout(
                       itemCount: controller.featuredProducts.length,
-                      itemBuilder: (_, index) => TProductCardVertical(product: controller.featuredProducts[index]),
+                      itemBuilder: (_, index) => TProductCardVertical(
+                        product: controller.featuredProducts[index],
+                      ),
                     );
                   }),
                 ],
