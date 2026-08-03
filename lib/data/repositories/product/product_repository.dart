@@ -7,7 +7,7 @@ import '../../../utils/exceptions/firebase_exceptions.dart';
 import '../../../utils/exceptions/platform_exceptions.dart';
 import '../categories/services/firebase_storage_service.dart';
 
-class ProductRepository extends GetxController{
+class ProductRepository extends GetxController {
   static ProductRepository get instance => Get.find();
 
   /// Firestore instance for database interactions.
@@ -16,7 +16,11 @@ class ProductRepository extends GetxController{
   /// Get limited featured products
   Future<List<ProductModel>> getFeaturedProducts() async {
     try {
-      final snapshot = await _db.collection('Products').where('IsFeatured', isEqualTo: true).limit(4).get();
+      final snapshot = await _db
+          .collection('Products')
+          .where('IsFeatured', isEqualTo: true)
+          .limit(4)
+          .get();
       return snapshot.docs.map((e) => ProductModel.fromSnapshot(e)).toList();
     } on FirebaseException catch (e) {
       throw TFirebaseException(e.code).message;
@@ -24,6 +28,40 @@ class ProductRepository extends GetxController{
       throw TPlatformException(e.code).message;
     } catch (e) {
       throw 'Something went wrong. Please try again';
+    }
+  }
+
+  /// Get limited featured products
+  Future<List<ProductModel>> getAllFeaturedProducts() async {
+    try {
+      final snapshot = await _db
+          .collection('Products')
+          .where('IsFeatured', isEqualTo: true)
+          .get();
+      return snapshot.docs.map((e) => ProductModel.fromSnapshot(e)).toList();
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(e.code).message;
+    } on PlatformException catch (e) {
+      throw TPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
+
+  /// Get Products based on the Brand
+  Future<List<ProductModel>> fetchProductsByQuery(Query query) async {
+    try {
+      final querySnapshot = await query.get();
+      final List<ProductModel> productList = querySnapshot.docs
+          .map((doc) => ProductModel.fromQuerySnapshot(doc))
+          .toList();
+      return productList;
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(e.code).message;
+    } on PlatformException catch (e) {
+      throw TPlatformException(e.code).message;
+    } catch (e) {
+      throw "Something went wrong. Please try again";
     }
   }
 
@@ -36,10 +74,16 @@ class ProductRepository extends GetxController{
       // Loop through each product
       for (var product in products) {
         // Get image data link from local assets
-        final thumbnail = await storage.getImageDataFromAssets(product.thumbnail);
+        final thumbnail = await storage.getImageDataFromAssets(
+          product.thumbnail,
+        );
 
         // Upload image and get its URL
-        final url = await storage.uploadImageData('Products/Images', thumbnail, product.thumbnail.toString());
+        final url = await storage.uploadImageData(
+          'Products/Images',
+          thumbnail,
+          product.thumbnail.toString(),
+        );
 
         // Assign URL to product.thumbnail attribute
         product.thumbnail = url;
@@ -52,7 +96,11 @@ class ProductRepository extends GetxController{
             final assetImage = await storage.getImageDataFromAssets(image);
 
             // Upload image and get its URL
-            final url = await storage.uploadImageData('Products/Images', assetImage, image);
+            final url = await storage.uploadImageData(
+              'Products/Images',
+              assetImage,
+              image,
+            );
 
             // Assign URL to product.thumbnail attribute
             imagesUrl.add(url);
