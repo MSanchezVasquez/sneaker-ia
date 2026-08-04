@@ -14,6 +14,7 @@ class TSortableProducts extends StatelessWidget {
   const TSortableProducts({super.key, required this.products});
 
   final List<ProductModel> products;
+
   @override
   Widget build(BuildContext context) {
     // Initialize controller for managing product sorting
