@@ -1,13 +1,14 @@
 import 'package:get/get.dart';
+import 'package:sneaker_store/data/repositories/product/product_repository.dart';
 
 import 'package:sneaker_store/features/shop/models/category_model.dart';
 
 import 'package:sneaker_store/data/repositories/categories/category_repository.dart';
+import 'package:sneaker_store/features/shop/models/product_model.dart';
 
 import 'package:sneaker_store/utils/popups/loaders.dart';
 
-
-class CategoryController extends GetxController{
+class CategoryController extends GetxController {
   static CategoryController get instance => Get.find();
 
   final isLoading = false.obs;
@@ -34,9 +35,15 @@ class CategoryController extends GetxController{
       allCategories.assignAll(categories);
 
       // Filter featured categories
-      featuredCategories.assignAll(allCategories.where((category) => category.isFeatured && category.parentId.isEmpty).take(8).toList());
-
-    } catch(e) {
+      featuredCategories.assignAll(
+        allCategories
+            .where(
+              (category) => category.isFeatured && category.parentId.isEmpty,
+            )
+            .take(8)
+            .toList(),
+      );
+    } catch (e) {
       TLoaders.errorSnackBar(title: "Oh Snap!", message: e.toString());
     } finally {
       // Remove Loader
@@ -47,4 +54,15 @@ class CategoryController extends GetxController{
   /// -- Load selected category data
 
   /// Get Category or Sub-Category Products
+  Future<List<ProductModel>> getCategoryProducts({
+    required String categoryId,
+    int limit = 4,
+  }) async {
+    // Fetch limited (4) products against each subCategory;
+    final products = await ProductRepository.instance.getProductsForCategory(
+      categoryId: categoryId,
+      limit: limit,
+    );
+    return products;
+  }
 }
