@@ -1,18 +1,16 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
+import 'package:sneaker_store/common/widgets/products/favourite_icon/favourite_icon.dart';
 
 import 'package:sneaker_store/features/shop/models/product_model.dart';
 
 import '../../../../../common/widgets/appbar/appbar.dart';
 import '../../../../../common/widgets/custom_shapes/curved_edges/curved_edges_widget.dart';
-import '../../../../../common/widgets/icons/t_circular_icon.dart';
 import '../../../../../common/widgets/images/t_rounded_image.dart';
 
 import '../../../../../utils/constants/colors.dart';
 import 'package:sneaker_store/utils/helpers/helper_functions.dart';
-import '../../../../../utils/constants/image_strings.dart';
 import '../../../../../utils/constants/sizes.dart';
 
 import 'package:sneaker_store/features/shop/controllers/product/images_controller.dart';
@@ -95,7 +93,7 @@ class TProductImageSlider extends StatelessWidget {
             /// Appbar Icons
             TAppBar(
               showBackArrow: true,
-              actions: [TCircularIcon(icon: Iconsax.heart5, color: Colors.red)],
+              actions: [TFavouriteIcon(productId: product.id)],
             ),
           ],
         ),
