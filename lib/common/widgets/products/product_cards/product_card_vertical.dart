@@ -9,8 +9,8 @@ import "package:sneaker_store/common/widgets/products/favourite_icon/favourite_i
 import "package:sneaker_store/common/widgets/texts/product_price_text.dart";
 import "package:sneaker_store/common/widgets/texts/product_title_text.dart";
 import "package:sneaker_store/common/widgets/texts/t_brand_title_text_with_verified_icon.dart";
-import "package:sneaker_store/features/shop/controllers/product/product_controller.dart";
 
+import "package:sneaker_store/features/shop/controllers/product/product_controller.dart";
 import "package:sneaker_store/features/shop/models/product_model.dart";
 import "package:sneaker_store/features/shop/screens/product_details/product_detail.dart";
 
@@ -58,17 +58,20 @@ class TProductCardVertical extends StatelessWidget {
                   Center(
                     child: TRoundedImage(
                       imageUrl: product.thumbnail,
-                      applyImageRadius: true, isNetworkImage: true,
+                      applyImageRadius: true,
+                      isNetworkImage: true,
                     ),
                   ),
 
                   /// -- Sale Tag
-                  if(salePercentage != null)
+                  if (salePercentage != null)
                     Positioned(
                       top: 12,
                       child: TRoundedContainer(
                         radius: TSizes.sm,
-                        backgroundColor: TColors.secondary.withValues(alpha: 0.8),
+                        backgroundColor: TColors.secondary.withValues(
+                          alpha: 0.8,
+                        ),
                         padding: const EdgeInsets.symmetric(
                           horizontal: TSizes.sm,
                           vertical: TSizes.xs,
@@ -116,12 +119,18 @@ class TProductCardVertical extends StatelessWidget {
                 Flexible(
                   child: Column(
                     children: [
-                      if(product.productType == ProductType.single.toString() && product.salePrice > 0)
+                      if (product.productType ==
+                              ProductType.single.toString() &&
+                          product.salePrice > 0)
                         Padding(
                           padding: const EdgeInsets.only(left: TSizes.sm),
-                          child: Text( product.price.toString(), style: Theme.of(context).textTheme.labelMedium!.apply(decoration: TextDecoration.lineThrough),
+                          child: Text(
+                            product.price.toString(),
+                            style: Theme.of(context).textTheme.labelMedium!
+                                .apply(decoration: TextDecoration.lineThrough),
                           ),
                         ),
+
                       /// Price, Show sale price as main price if sale exist.
                       Padding(
                         padding: const EdgeInsets.only(left: TSizes.sm),
