@@ -9,6 +9,7 @@ import 'package:sneaker_store/features/authentication/screens/login/login.dart';
 import 'package:sneaker_store/features/authentication/screens/onboarding/onboarding.dart';
 import 'package:sneaker_store/features/authentication/screens/signup/verify_email.dart';
 import 'package:sneaker_store/navigation_menu.dart';
+import 'package:sneaker_store/utils/local_storage/storage_utility.dart';
 
 import '../../../utils/exceptions/firebase_auth_exceptions.dart';
 import '../../../utils/exceptions/firebase_exceptions.dart';
@@ -37,9 +38,13 @@ class AuthenticationRepository extends GetxController {
   /// Function to Show Relevant Screen
   screenRedirect() async {
     final user = _auth.currentUser;
+
     if (user != null) {
       // If the user is logged in
       if (user.emailVerified) {
+        // Initialize User Specific Storage
+        await TLocalStorage.init(user.uid);
+
         // If the user's email is verified, navigate to the main Navigation Menu
         Get.offAll(() => const NavigationMenu());
       } else {
