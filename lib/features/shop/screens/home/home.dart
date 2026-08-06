@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sneaker_store/common/widgets/shimmers/vertical_product_shimmer.dart';
 
-import '../../controllers/product_controller.dart';
+import '../../controllers/product/product_controller.dart';
 
 import '../all_products/all_products.dart';
 import '../../../../common/widgets/custom_shapes/containers/search_container.dart';
@@ -85,8 +85,9 @@ class HomeScreen extends StatelessWidget {
 
                   /// -- Popular Products
                   Obx(() {
-                    if (controller.isLoading.value)
+                    if (controller.isLoading.value) {
                       return const TVerticalProductShimmer();
+                    }
                     if (controller.featuredProducts.isEmpty) {
                       return Center(
                         child: Text(
